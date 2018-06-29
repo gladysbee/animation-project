@@ -1,20 +1,37 @@
 // Global Variables
 var p5Canvas;
 var myName;
+var x = 40;
+var y = 40;
+var xspeed = 4;
+var yspeed = 4;
 
-// initialize global variables in setup() function
 function setup() {
-  p5Canvas = createCanvas(800, 600);
-  p5Canvas.parent("#p5-canvas");
-  myName = select("#my-name");
-  myName.html("[Your Name Here]");
+    p5Canvas = createCanvas(855, 695);
+    p5Canvas.parent("#p5-canvas");
+    myName = select("#my-name");
+    myName.html("Gladys");
+    background(25);
 }
-
 
 function draw() {
-  background(0, 255, 0);
-}
 
-// create an animation function below, then call it in draw()
-// see example.js if you need a place to start!
-// when you're ready, be sure to change index.html to link to this script instead of example.js
+	//distance from center of the screen
+var d = dist(windowWidth / 2, windowHeight / 2, mouseX, mouseY);
+    fill (random(200, 250), random(200, 250), random(200, 250));
+  	ellipse (x, y, d, d);
+
+  	//bouncing horizontally
+ 	 x = x + xspeed;
+  	
+  	 if (x > windowWidth - d || x < 0)  {
+     	xspeed = -xspeed;
+        console.log(xspeed);
+     }
+//bouncing veritcally
+  	y=y + yspeed;
+
+    if (y > windowHeight - d || y < 0) {
+        yspeed = -yspeed;
+    }
+}
